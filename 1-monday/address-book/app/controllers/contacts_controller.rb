@@ -25,8 +25,13 @@ class ContactsController < ApplicationController
 
   def create
     contact = params[:contact]
-    contact = Contact.create(name: contact[:name], address: contact[:address], phone: contact[:phone], email: contact[:email])
-    redirect_to action: "show", id: contact.id
+    contact = Contact.new(name: contact[:name], address: contact[:address], phone: contact[:phone], email: contact[:email])
+    if contact.valid?
+      contact.save
+      redirect_to action: "show", id: contact.id
+    else
+      redirect_to action: "new"
+    end
   end
 
   def favorite

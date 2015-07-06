@@ -13,5 +13,4 @@ class Project < ActiveRecord::Base
   def self.last_created(limit)
     order(created_at: :desc).limit(limit)
   end
-
 end

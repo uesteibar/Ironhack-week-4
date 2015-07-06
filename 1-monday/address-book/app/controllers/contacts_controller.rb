@@ -1,4 +1,4 @@
-class ContactController < ApplicationController
+class ContactsController < ApplicationController
   def index
     @contacts = Contact.all.order(name: :asc)
     render :index
@@ -10,7 +10,7 @@ class ContactController < ApplicationController
   end
 
   def create
-    
+
     render :show
   end
 

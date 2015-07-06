@@ -8,6 +8,11 @@ class ContactsController < ApplicationController
     render :index
   end
 
+  def index_favorites
+    @contacts = Contact.where(favorite: true).order(name: :asc)
+    render :index
+  end
+
   def show
     @contact = Contact.find(params[:id])
     render :show

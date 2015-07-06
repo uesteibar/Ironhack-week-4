@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Projects</title>
+</head>
+
+<body>
+  <h2>Lots of projects</h2>
+  <ul>
+    <% @projects.each do |project| %>
+      <li>
+        <a href="/projects/<%= project.id %>">
+          <%= project.name %>
+        </a>
+
+        <% if project.description.present? %>
+          -
+          <%= project.description %>
+            <% end %>
+      </li>
+      <% end %>
+  </ul>
+
+</body>
+
+</html>

@@ -11,5 +11,7 @@ Project.destroy_all
 
 puts "--- Creating 25 Projects ---"
 25.times do |num|
-  Project.create! name: '#{num} project', description: "#{num} project description"
+  Project.create! name: "#{num} project", description: "#{num} project description"
 end
+Project.create! name: "25 project"
+Project.create! name: "26 project", description: ""

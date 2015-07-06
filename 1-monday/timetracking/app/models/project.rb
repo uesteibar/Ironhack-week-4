@@ -10,4 +10,8 @@ class Project < ActiveRecord::Base
     where("created_at < ?", date).destroy_all
   end
 
+  def self.last_created(limit)
+    order(created_at: :desc).limit(limit)
+  end
+
 end

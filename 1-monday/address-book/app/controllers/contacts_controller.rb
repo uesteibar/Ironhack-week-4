@@ -1,6 +1,10 @@
 class ContactsController < ApplicationController
   def index
-    @contacts = Contact.all.order(name: :asc)
+    if params[:initial].present?
+      @contacts = Contact.where("UPPER(name) LIKE ?", "#{params[:initial]}%").order(name: :asc)
+    else
+      @contacts = Contact.all.order(name: :asc)
+    end
     render :index
   end
 
@@ -10,7 +14,7 @@ class ContactsController < ApplicationController
   end
 
   def create
-
+    
     render :show
   end
 

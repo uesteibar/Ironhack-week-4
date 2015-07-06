@@ -14,8 +14,14 @@ class ContactsController < ApplicationController
   end
 
   def new
+    @contact = Contact.new
+    render :new
+  end
 
-    render :show
+  def create
+    contact = params[:contact]
+    contact = Contact.create(name: contact[:name], address: contact[:address], phone: contact[:phone], email: contact[:email])
+    redirect_to action: "show", id: contact.id
   end
 
   def destroy

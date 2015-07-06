@@ -1,0 +1,8 @@
+
+<%= form_for @contact, url: {action: "create"} do |c| %>
+  <%= c.text_field :name %>
+  <%= c.text_field :address %>
+  <%= c.text_field :phone %>
+  <%= c.text_field :email %>
+  <%= c.submit "Create" %>
+<% end %>

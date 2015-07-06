@@ -13,13 +13,13 @@ class ContactsController < ApplicationController
     render :show
   end
 
-  def create
-    
+  def new
+
     render :show
   end
 
   def destroy
     Contact.find(params[:id]).destroy
-    render :index
+    redirect_to action: "index"
   end
 end

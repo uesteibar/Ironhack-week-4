@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get '/' => "sites#home"
 
   resources :contacts, only: [:index, :show, :new, :create, :destroy]
+  patch '/contacts/favorite/:id' => "contacts#favorite"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

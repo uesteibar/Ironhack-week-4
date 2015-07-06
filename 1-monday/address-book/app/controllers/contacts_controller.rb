@@ -24,6 +24,13 @@ class ContactsController < ApplicationController
     redirect_to action: "show", id: contact.id
   end
 
+  def favorite
+    contact = Contact.find(params[:id])
+    contact.favorite = true
+    contact.save
+    redirect_to action: "show", id: contact.id
+  end
+
   def destroy
     Contact.find(params[:id]).destroy
     redirect_to action: "index"

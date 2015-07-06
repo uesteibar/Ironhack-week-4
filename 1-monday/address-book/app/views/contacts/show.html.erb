@@ -4,7 +4,13 @@
 <p>Address: <%= @contact.address %></p>
 <p>Phone: <%= @contact.phone %></p>
 <p>Email: <%= @contact.email %></p>
+<p>Favorite: <%= @contact.favorite %></p>
 
 <%= form_tag(contact_path(@contact), method: "delete") do%>
   <%= submit_tag("Delete") %>
+<% end %>
+
+<%= form_tag("/contacts/favorite/#{@contact.id}", method: "patch") do%>
+  <%= hidden_field_tag(:favorite, true) %>
+  <%= submit_tag("Favorite") %>
 <% end %>

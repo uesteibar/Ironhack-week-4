@@ -33,7 +33,7 @@ class ContactsController < ApplicationController
       email: contact[:email])
     if contact.valid?
       contact.save
-      redirect_to contact_path(contact)
+      redirect_to contact_path(contact), notice: "Project was successfully created."
     else
       redirect_to action: "new"
     end

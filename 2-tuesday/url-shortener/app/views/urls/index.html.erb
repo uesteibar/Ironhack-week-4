@@ -1,0 +1,6 @@
+
+<ul>
+  <% @urls.each do |url| %>
+    <li><%= link_to url.shortcut, url_path %> - </li>
+  <% end %>
+</ul>

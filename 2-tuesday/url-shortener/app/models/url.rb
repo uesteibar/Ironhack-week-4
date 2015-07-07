@@ -1,5 +1,6 @@
 class Url < ActiveRecord::Base
-  validates_presence_of :shortcut, :url, unique: true
+  validates_presence_of :shortcut, :url
+  validates_uniqueness_of :shortcut, :url
   validates_format_of :url, :with => URI.regexp(['http'])
 
   before_validation :complete_url
@@ -7,8 +8,6 @@ class Url < ActiveRecord::Base
   private
 
   def complete_url
-    unless url.starts_with?("http://") || url.starts_with?("https://")
-      url.insert(0, "http://")
-    end
+    UrlCompleter.new(url).complete
   end
 end

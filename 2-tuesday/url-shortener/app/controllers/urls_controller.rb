@@ -14,12 +14,16 @@ class UrlsController < ApplicationController
   end
 
   def create
-    url = Url.new(shortcut: StringShortcutGenerator.new(6).generate, url: url_params[:url])
-    if url.valid?
-      url.save
-      redirect_to url_path(url), notice: "Url was successfully created."
+    if (url = Url.find_by(url: UrlCompleter.new(url_params[:url]).complete)).nil?
+      url = Url.new(shortcut: StringShortcutGenerator.new(6).generate, url: url_params[:url])
+      if url.valid?
+        url.save
+        redirect_to url_path(url), notice: "Url was successfully created."
+      else
+        redirect_to action: "new"
+      end
     else
-      redirect_to action: "new"
+      redirect_to action: "show", id: url.id
     end
   end
 

@@ -15,7 +15,6 @@ class ContactsController < ApplicationController
 
   def show
     @contact = Contact.find(params[:id])
-    render :show
     rescue ActiveRecord::RecordNotFound
       render_404(params)
   end
@@ -36,12 +35,13 @@ class ContactsController < ApplicationController
 
   def edit
     @contact = Contact.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      render_404(params)
   end
 
   def update
     contact = Contact.find(params[:id])
-    if contact.valid?
-      contact.save
+    if contact.update_attributes(contact_params)
       redirect_to contact_path(contact), notice: "Contact #{contact.name} was successfully modified."
     else
       redirect_to action: "edit", id: params[:id]

@@ -16,6 +16,8 @@ class ContactsController < ApplicationController
   def show
     @contact = Contact.find(params[:id])
     render :show
+    rescue ActiveRecord::RecordNotFound
+      render :not_found
   end
 
   def new

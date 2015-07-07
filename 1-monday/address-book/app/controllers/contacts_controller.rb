@@ -27,7 +27,10 @@ class ContactsController < ApplicationController
 
   def create
     contact = params[:contact]
-    contact = Contact.new(name: contact[:name], address: contact[:address], phone: contact[:phone], email: contact[:email])
+    contact = Contact.new(name: contact[:name],
+      address: contact[:address],
+      phone: contact[:phone],
+      email: contact[:email])
     if contact.valid?
       contact.save
       redirect_to action: "show", id: contact.id

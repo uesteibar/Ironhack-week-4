@@ -5,6 +5,6 @@ urls = [
   "http://google.com"
 ]
 
-urls.each_with_index do |url, i|
-  Url.create(shortcut: i, url: url)
+urls.each do |url|
+  Url.create(shortcut: StringShortcutGenerator.new(6).generate, url: url)
 end

@@ -1,5 +1,6 @@
 class StringShortcutGenerator
-  def initialize
+  def initialize(length)
+    @length = length
     @letters = "abcdefghijklmnopqrstuvwxyz".split("")
   end
 
@@ -15,13 +16,13 @@ class StringShortcutGenerator
 
   def random_shortcut
     shortcut = ""
-    5.times do
+    @length.times do
       shortcut += @letters.sample
     end
     shortcut
   end
 
   def shortcut_unique?(shortcut)
-    true unless Url.find(shortcut: shortcut).nil?
+    true unless Url.find_by(shortcut: shortcut)
   end
 end

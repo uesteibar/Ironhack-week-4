@@ -1,8 +1,12 @@
 
 <%= form_for @contact, url: {action: "create"} do |c| %>
+  <%= label_tag(:name, "Name:") %>
   <%= c.text_field :name %>
+  <%= label_tag(:address, "Address:") %>
   <%= c.text_field :address %>
+  <%= label_tag(:phone, "Phone:") %>
   <%= c.text_field :phone %>
+  <%= label_tag(:email, "Email:") %>
   <%= c.text_field :email %>
   <%= c.submit "Create" %>
 <% end %>

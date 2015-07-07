@@ -17,7 +17,7 @@ class ContactsController < ApplicationController
     @contact = Contact.find(params[:id])
     render :show
     rescue ActiveRecord::RecordNotFound
-      render :not_found
+      render_404(params)
   end
 
   def new
@@ -46,5 +46,12 @@ class ContactsController < ApplicationController
   def destroy
     Contact.find(params[:id]).destroy
     redirect_to action: "index"
+  end
+
+  private
+
+  def render_404(params)
+    Rails.logger.warn("Tried to access #{params} which did not exist")
+    render 'layouts/404'
   end
 end

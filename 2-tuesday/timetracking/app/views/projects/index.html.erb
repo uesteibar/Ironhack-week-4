@@ -1,0 +1,15 @@
+
+  <h2>Lots of projects</h2>
+  <ul>
+    <% @projects.each do |project| %>
+      <li>
+
+          <%= link_to project.name, project_path(project) %>
+
+        <% if project.description.present? %>
+          -
+          <%= project.description %>
+            <% end %>
+      </li>
+      <% end %>
+  </ul>

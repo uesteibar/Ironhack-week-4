@@ -26,11 +26,7 @@ class ContactsController < ApplicationController
   end
 
   def create
-    contact = params[:contact]
-    contact = Contact.new(name: contact[:name],
-      address: contact[:address],
-      phone: contact[:phone],
-      email: contact[:email])
+    contact = Contact.new(contact_params)
     if contact.valid?
       contact.save
       redirect_to contact_path(contact), notice: "Project was successfully created."
@@ -56,5 +52,9 @@ class ContactsController < ApplicationController
   def render_404(params)
     Rails.logger.warn("Tried to access #{params} which did not exist")
     render 'layouts/404'
+  end
+
+  def contact_params
+    params.require(:contact).permit(:name, :address, :phone, :email)
   end
 end

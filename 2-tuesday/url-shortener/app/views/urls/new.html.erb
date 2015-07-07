@@ -1,0 +1,14 @@
+<%= form_for @url do |u| %>
+
+<%= render 'layouts/errors', model: @url  %>
+
+<div class="fields">
+  <%= u.label :url %>
+  <%= u.text_field :url %>
+</div>
+
+<div class="actions">
+  <%= u.submit %>
+</div>
+
+<% end %>

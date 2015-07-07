@@ -11,7 +11,10 @@ Project.destroy_all
 
 puts "--- Creating 25 Projects ---"
 25.times do |num|
-  Project.create! name: "#{num} project", description: "#{num} project description"
+  project = Project.create! name: "#{num} project", description: "#{num} project description"
+  3.times do |entry_num|
+    project.entries.create(hours: entry_num, minutes: 15, comments: "hey!", date: Date.today)
+  end
 end
 Project.create! name: "25 project"
 Project.create! name: "26 project", description: ""

@@ -1,0 +1,14 @@
+<h3>Top 10!</h3>
+<ul>
+  <% @urls.each do |url| %>
+  <li>
+    <%= link_to url.shortcut, url_path(url) %>
+    -
+    <%= link_to url.url, url.url, target: "_blank" %>
+    -
+      <%= "visited #{url.times_visited} times" %>
+    -
+      <%= "created at #{url.created_at}" %>
+  </li>
+  <% end %>
+</ul>

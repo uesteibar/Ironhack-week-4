@@ -27,6 +27,10 @@ class UrlsController < ApplicationController
     end
   end
 
+  def most_visited_pages
+    @urls = Url.limit(10).order(times_visited: :desc)
+  end
+
   private
 
   def render_404(params)

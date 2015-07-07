@@ -1,6 +1,11 @@
 
 class RedirectionController < ApplicationController
   def redirect
-    redirect_to UrlRedirecter.new(Url.find_by(shortcut: params[:shortcut])).url
+    url = Url.find_by(shortcut: params[:shortcut])
+    if url.present?
+      redirect_to UrlRedirecter.new(url).redirect
+    else
+      render "layouts/404"
+    end
   end
 end

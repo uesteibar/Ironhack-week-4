@@ -1,2 +1,14 @@
+<h3><%= link_to @url.shortcut, url_path(@url) %>
+  -
+  <%= @url.url %></h3>
+<p>
+  <%= "visited #{@url.times_visited} times" %>
+</p>
 
-<h3><%= link_to @url.shortcut, url_path(@url) %> - <%= @url.url %></h3>
+<p>
+  <% if @url.visited_at.nil? %>
+  <%= "never visited" %>
+  <% else %>
+  <%= "last visited at #{@url.visited_at}" %>
+  <% end %>
+</p>

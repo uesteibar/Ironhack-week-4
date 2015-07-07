@@ -3,7 +3,10 @@ class UrlRedirecter
     @url = url
   end
 
-  def url
+  def redirect
+    @url.visited_at = Time.now
+    @url.times_visited += 1
+    @url.save
     @url.url
   end
 end

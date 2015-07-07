@@ -11,8 +11,14 @@
 <%= form_tag(contact_path(@contact), method: "delete") do%>
   <%= submit_tag("Delete") %>
 <% end %>
-
-<%= form_tag("/contacts/favorite/#{@contact.id}", method: "patch") do%>
+<% if @contact.favorite %>
+<%= form_tag("/contacts/#{@contact.id}/favorite", method: "patch") do%>
+  <%= hidden_field_tag(:favorite, false) %>
+  <%= submit_tag("Unfavorite") %>
+<% end %>
+<% else %>
+<%= form_tag("/contacts/#{@contact.id}/favorite", method: "patch") do%>
   <%= hidden_field_tag(:favorite, true) %>
   <%= submit_tag("Favorite") %>
+<% end %>
 <% end %>

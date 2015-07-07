@@ -50,7 +50,7 @@ class ContactsController < ApplicationController
 
   def favorite
     contact = Contact.find(params[:id])
-    contact.favorite = true
+    contact.favorite = params[:favorite]
     contact.save
     redirect_to contact_path(contact)
   end

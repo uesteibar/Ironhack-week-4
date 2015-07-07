@@ -7,13 +7,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <a href="/">Home</a>
-  <a href="/contacts/new">New contact</a>
-  <a href="/contacts">All contacts</a>
-  <a href="/contacts/favorites">Favorite contacts</a>
+
   <h1>Adress Book</h1>
 
 <%= yield %>
 
+<hr>
+
+<footer>
+  <a href="/">Home</a>
+  <a href="/contacts/new">New contact</a>
+  <a href="/contacts">All contacts</a>
+  <a href="/contacts/favorites">Favorite contacts</a>
+</footer>
 </body>
 </html>

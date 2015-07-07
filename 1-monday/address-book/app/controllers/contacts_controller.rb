@@ -33,7 +33,7 @@ class ContactsController < ApplicationController
       email: contact[:email])
     if contact.valid?
       contact.save
-      redirect_to action: "show", id: contact.id
+      redirect_to contact_path(contact)
     else
       redirect_to action: "new"
     end
@@ -43,7 +43,7 @@ class ContactsController < ApplicationController
     contact = Contact.find(params[:id])
     contact.favorite = true
     contact.save
-    redirect_to action: "show", id: contact.id
+    redirect_to contact_path(contact)
   end
 
   def destroy

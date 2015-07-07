@@ -1,0 +1,25 @@
+<%= form_for contact do |c| %>
+
+<%= render 'layouts/errors', model: contact  %>
+
+<div class="fields">
+  <%= c.label :name %>
+  <%= c.text_field :name %>
+</div>
+<div class="fields">
+  <%= c.label :address %>
+  <%= c.text_field :address %>
+</div>
+<div class="fields">
+  <%= c.label :phone %>
+  <%= c.text_field :phone %>
+</div>
+<div class="fields">
+  <%= c.label :email %>
+  <%= c.text_field :email %>
+</div>
+<div class="actions">
+  <%= c.submit %>
+</div>
+
+<% end %>

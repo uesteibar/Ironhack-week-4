@@ -6,6 +6,8 @@
 <p>Email: <%= @contact.email %></p>
 <p>Favorite: <%= @contact.favorite %></p>
 
+<%= link_to "Edit", edit_contact_path %>
+
 <%= form_tag(contact_path(@contact), method: "delete") do%>
   <%= submit_tag("Delete") %>
 <% end %>

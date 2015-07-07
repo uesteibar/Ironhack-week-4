@@ -22,16 +22,29 @@ class ContactsController < ApplicationController
 
   def new
     @contact = Contact.new
-    render :new
   end
 
   def create
     contact = Contact.new(contact_params)
     if contact.valid?
       contact.save
-      redirect_to contact_path(contact), notice: "Project was successfully created."
+      redirect_to contact_path(contact), notice: "Contact was successfully created."
     else
       redirect_to action: "new"
+    end
+  end
+
+  def edit
+    @contact = Contact.find(params[:id])
+  end
+
+  def update
+    contact = Contact.find(params[:id])
+    if contact.valid?
+      contact.save
+      redirect_to contact_path(contact), notice: "Contact #{contact.name} was successfully modified."
+    else
+      redirect_to action: "edit", id: params[:id]
     end
   end
 

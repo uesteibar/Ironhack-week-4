@@ -14,17 +14,14 @@ class UrlsController < ApplicationController
   end
 
   def create
-    if (url = Url.find_by(url: UrlCompleter.new(url_params[:url]).complete)).nil?
-      url = Url.new(shortcut: StringShortcutGenerator.new(6).generate, url: url_params[:url])
-      if url.valid?
-        url.save
-        redirect_to url_path(url), notice: "Url was successfully created."
-      else
-        redirect_to action: "new"
-      end
+    url = Url.find_or_initialize_by(url: UrlCompleter.new(url_params[:url]).complete)
+    if url.valid?
+      url.save
+      redirect_to url_path(url), notice: "Url was successfully created."
     else
-      redirect_to action: "show", id: url.id
+      redirect_to action: "new"
     end
+
   end
 
   def most_visited_pages

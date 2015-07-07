@@ -7,5 +7,6 @@ class UrlCompleter
     unless @url.starts_with?("http://") || @url.starts_with?("https://")
       @url.insert(0, "http://")
     end
+    @url
   end
 end

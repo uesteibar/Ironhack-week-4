@@ -3,6 +3,10 @@
 
 <ul>
   <% @entries.each do |entry| %>
-    <li><%= "#{entry.date} - #{entry.hours}H #{entry.minutes}M"%></li>
+    <li><%= "#{entry.date.strftime('%m.%d.%Y')} - #{entry.hours}h #{entry.minutes}m"%></li>
   <% end %>
 </ul>
+
+<p>
+  Total hours: <%= @project.total_hours_in_month %>
+</p>

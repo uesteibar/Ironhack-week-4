@@ -28,7 +28,8 @@ class Project < ActiveRecord::Base
   private
 
   def month_entries(month, year)
-    entries.where("date <= ?", Date.new(year, month, -1)).
-      where("date >= ?", Date.new(year, month, 1))
+    dt = Date.new(year, month, 1)
+    entries.where("date <= ?", dt.end_of_month).
+      where("date >= ?", dt)
   end
 end

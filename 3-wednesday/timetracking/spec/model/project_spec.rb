@@ -24,13 +24,13 @@ describe Project do
       @project = Project.create(name: 'Entry counter')
 
       @project.entries.create(hours: 1, minutes: 30, date: 1.year.ago)
-      @project.entries.create(hours: 1, minutes: 30, date: Date.today)
-      @project.entries.create(hours: 1, minutes: 30, date: Date.today)
+      @project.entries.create(hours: 1, minutes: 30, date: Date.current)
+      @project.entries.create(hours: 1, minutes: 30, date: Date.current)
       @project.entries.create(hours: 1, minutes: 30, date: 1.year.ago)
     end
 
     it 'should return the total hours in the given month of the given year' do
-      expect(@project.reload.total_hours_in_month(Date.today.month, Date.today.year)).to eq 2
+      expect(@project.reload.total_hours_in_month(Date.current.month, Date.current.year)).to eq 3
     end
 
     it 'should return nil if provided month or year is nil' do

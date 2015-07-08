@@ -6,7 +6,8 @@ class Project < ActiveRecord::Base
   validates_uniqueness_of :name
 
   def total_hours_in_month(month = Date.current.month, year = Date.current.year)
-    return if month.nil? || year.nil?
+    return if year.nil?
+    return if month.nil? || month > 12 || month < 1
 
     subset = month_entries(month, year)
     subset.sum(:hours) + (subset.sum(:minutes) / 60.0)

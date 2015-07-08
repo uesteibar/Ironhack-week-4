@@ -36,5 +36,10 @@ describe Project do
     it 'should return nil if provided month or year is nil' do
       expect(@project.reload.total_hours_in_month(nil, nil)).to be_falsy
     end
+
+    it 'should return nil if month is not between 1 and 12' do
+      expect(@project.reload.total_hours_in_month(0, 2014)).to be_falsy
+      expect(@project.reload.total_hours_in_month(13, 2014)).to be_falsy
+    end
   end
 end

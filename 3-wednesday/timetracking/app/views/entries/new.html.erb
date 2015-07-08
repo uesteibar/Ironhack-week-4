@@ -1,3 +1,7 @@
+<h1><%= @project.name %></h1>
+
+<%= render 'layouts/errors', model: @entry  %>
+
 <%= form_for [@project, @entry] do |f| %>
 <div>
   <%= f.date_field :date%>

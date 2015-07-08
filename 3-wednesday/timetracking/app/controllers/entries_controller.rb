@@ -11,8 +11,14 @@ class EntriesController < ApplicationController
 
   def create
     @project = Project.find(params[:project_id])
-    @project.entries.create(entry_params)
-    redirect_to action: "index", project_id: @project.id
+    @entry = @project.entries.new(entry_params)
+    if @entry.valid?
+      @entry.save
+      redirect_to action: "index", project_id: @project.id
+    else
+      render :new
+    end
+
   end
 
   private

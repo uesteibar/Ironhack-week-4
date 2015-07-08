@@ -9,7 +9,6 @@ class Project < ActiveRecord::Base
     return if month.nil? || year.nil?
 
     subset = month_entries(month, year)
-
     subset.sum(:hours) + (subset.sum(:minutes) / 60.0)
   end
 
@@ -25,9 +24,7 @@ class Project < ActiveRecord::Base
     order(created_at: :desc).limit(limit)
   end
 
-  private
-
-  def month_entries(month, year)
+  def month_entries(month = Date.current.month, year = Date.current.year)
     dt = Date.new(year, month, 1)
     entries.where("date <= ?", dt.end_of_month).
       where("date >= ?", dt)

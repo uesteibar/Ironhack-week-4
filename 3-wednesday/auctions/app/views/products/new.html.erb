@@ -1,0 +1,25 @@
+<h1><%= @user.name %> - new product</h1>
+
+<%= render 'layouts/errors', model: @product  %>
+
+<%= form_for [@user, @product] do |f| %>
+<div>
+  <%= f.label :title%>
+  <%= f.text_field :title%>
+</div>
+
+<div>
+  <%= f.label :desctipcion%>
+  <%= f.text_area :description%>
+</div>
+
+
+<div>
+  <%= f.label :deadline%>
+  <%= f.date_field :deadline%>
+</div>
+
+<div>
+  <%= f.submit %>
+</div>
+<% end %>

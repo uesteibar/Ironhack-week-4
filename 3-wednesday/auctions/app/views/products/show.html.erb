@@ -4,3 +4,22 @@
 <%= form_tag(user_product_path(@product.user, @product), method: "delete") do%>
   <%= submit_tag("Delete") %>
 <% end %>
+
+
+<%= render 'layouts/errors', model: @bid  %>
+
+<%= form_for [@product.user, @product, @bid] do |f| %>
+<div>
+  <%= f.label :email%>
+  <%= f.text_field :email%>
+</div>
+
+<div>
+  <%= f.label :amount%>
+  <%= f.number_field :amount%>
+</div>
+
+<div>
+  <%= f.submit %>
+</div>
+<% end %>

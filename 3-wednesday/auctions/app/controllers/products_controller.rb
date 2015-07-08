@@ -23,6 +23,12 @@ class ProductsController < ApplicationController
     end
   end
 
+  def destroy
+    product = Product.find(params[:id])
+    product.destroy
+    redirect_to action: "index", user_id: product.user.id
+  end
+
   private
 
   def product_params

@@ -3,3 +3,7 @@
 <p><%= @user.email %></p>
 
 <%= link_to "Products", user_products_path(@user) %>
+
+<%= form_tag(user_path(@user), method: "delete") do%>
+  <%= submit_tag("Delete") %>
+<% end %>

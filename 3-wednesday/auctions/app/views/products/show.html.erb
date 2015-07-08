@@ -1,3 +1,6 @@
 <h3><%= @product.title %></h3>
 <p><%= @product.description %></p>
 <p><%= @product.deadline.strftime("Deadline on %d/%m/%Y") %></p>
+<%= form_tag(user_product_path(@product.user, @product), method: "delete") do%>
+  <%= submit_tag("Delete") %>
+<% end %>

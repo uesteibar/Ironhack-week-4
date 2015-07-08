@@ -1,0 +1,17 @@
+<%= form_for [@project, @entry] do |f| %>
+<div>
+  <%= f.date_field :date%>
+</div>
+
+<div>
+  <%= f.number_field :hours%>
+</div>
+
+<div>
+  <%= f.number_field :minutes%>
+</div>
+
+<div>
+  <%= f.submit %>
+</div>
+<% end %>

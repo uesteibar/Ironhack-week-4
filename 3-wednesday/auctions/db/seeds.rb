@@ -1,4 +1,10 @@
 
 5.times do |i|
-  User.create(name: "User #{i}", email: "user#{i}@example.com")
+  user = User.create(name: "User #{i}", email: "user#{i}@example.com")
+  3.times do |j|
+    user.products.create(
+    title: "Awesome Product #{j}",
+    description: "It is awesome!",
+    deadline: 1.day.from_now)
+  end
 end

@@ -1,0 +1,13 @@
+<h1><%= @user.name %>'s products</h1>
+
+<ul>
+  <% if @products.present? %>
+  <% @products.each do |product| %>
+  <li>
+    <%= product.title %>
+
+  </li>
+  <% end %>
+  <% end %>
+
+</ul>

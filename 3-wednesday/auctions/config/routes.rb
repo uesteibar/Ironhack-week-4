@@ -2,6 +2,6 @@ Rails.application.routes.draw do
 
   get '/' => "sites#home"
 
-  resources :users, only: [:index]
+  resources :users, only: [:index, :show]
 
 end

@@ -1,9 +1,10 @@
-require "rails_helper"
+require 'rails_helper'
 
-describe User do
+RSpec.describe User, type: :model do
   before(:each) do
-    @name = "John Doe"
-    @email = "email@example.com"
+    @name = 'John Doe'
+
+    @email = 'email@example.com'
   end
 
   describe 'user - creation' do
@@ -14,9 +15,9 @@ describe User do
 
     it 'should fail when user email is already used' do
       User.create(name: @name, email: @email)
-      expect {
+      expect do
         User.create!(name: @name, email: @email)
-      }.to raise_error(ActiveRecord::RecordInvalid)
+      end.to raise_error(ActiveRecord::RecordInvalid)
     end
   end
 end

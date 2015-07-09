@@ -9,5 +9,6 @@ Rails.application.routes.draw do
 
   # User login
   get "/users/login" => "users#login"
+  post "/users/login" => "users#authenticate"
   resources :users, only: [:new, :create]
 end

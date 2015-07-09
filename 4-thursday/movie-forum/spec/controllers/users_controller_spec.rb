@@ -14,16 +14,16 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  describe "GET #new" do
+  describe "GET #login" do
     it "should respond successfully with an HTTP 200 status code" do
-      get :new
+      get :login
       expect(response).to be_success
       expect(response.code.to_i).to eq(200)
     end
 
-    it "should render the new template" do
-      get :new
-      expect(response).to render_template("new")
+    it "should render the login template" do
+      get :login
+      expect(response).to render_template("login")
     end
   end
 

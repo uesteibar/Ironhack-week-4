@@ -4,6 +4,11 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def logout
+    session[:user_id] = nil
+    redirect_to "/users/login"
+  end
+
   def new
     @user = User.new
   end
@@ -21,8 +26,8 @@ class UsersController < ApplicationController
 
   def authenticate
     @user = User.find_by(user_params)
-    if @user.id.present?
-      session[:user_id]
+    if @user.present?
+      session[:user_id] = @user.id
       redirect_to "/movies/search"
       return
     end

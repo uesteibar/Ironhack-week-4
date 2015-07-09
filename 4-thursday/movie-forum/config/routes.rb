@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   # User login
   get "/users/login" => "users#login"
   post "/users/login" => "users#authenticate"
+  delete "/users/logout" => "users#logout"
   resources :users, only: [:new, :create]
 end

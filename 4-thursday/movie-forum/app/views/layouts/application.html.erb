@@ -1,30 +1,49 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>MovieForum</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
 
-<div class="container">
+  <head>
+    <title>MovieForum</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
 
-  <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/">
-        Movie Forum
-      </a>
+  <body>
+
+    <div class="container">
+
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/">
+              Movie Forum
+            </a>
+          </div>
+          <ul class="nav navbar-nav navbar-left">
+            <li>
+              <a href="/movies/search">Search</a>
+            </li>
+            <% if session[:user_id] %>
+            <li>
+              <%= form_tag("/users/logout", method: "delete") do %>
+                <%= submit_tag "Log out", class: "btn btn-link" %>
+              <% end %>
+            </li>
+            <% else %>
+            <li>
+              <a href="/users/login">Log in</a>
+            </li>
+            <li>
+              <a href="/users/new">Sign up</a>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+
+      <%= yield %>
     </div>
-    <ul class="nav navbar-nav navbar-left">
-        <li><a href="/movies/search">Search</a></li>
-      </ul>
-  </div>
-</nav>
 
-  <%= yield %>
-</div>
+  </body>
 
-</body>
 </html>

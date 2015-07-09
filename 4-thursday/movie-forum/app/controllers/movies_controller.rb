@@ -9,6 +9,9 @@ class MoviesController < ApplicationController
   end
 
   def search
+    if session[:user_id].nil?
+      redirect_to "/users/login"
+    end
   end
 
   def create

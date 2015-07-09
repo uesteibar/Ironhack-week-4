@@ -6,7 +6,8 @@ RSpec.describe Bid, type: :model do
     @product = @owner.products.create(
       title: "Awesome thing",
       description: "Super super awesome!",
-      deadline: 1.day.from_now
+      deadline: 1.day.from_now,
+      minimum_bid: 5
     )
     @bidder = User.create(name: "bidder", email: "bidder@example.com")
   end
@@ -26,6 +27,12 @@ RSpec.describe Bid, type: :model do
     it 'should NOT create a bid when amount is less than 0' do
       expect do
         @bidder.bids.create!(product_id: @product.id, amount: -10)
+      end.to raise_error(ActiveRecord::RecordInvalid)
+    end
+
+    it 'should NOT create a bid when amount is less than the minimum bid' do
+      expect do
+        @bidder.bids.create!(product_id: @product.id, amount: 4)
       end.to raise_error(ActiveRecord::RecordInvalid)
     end
 

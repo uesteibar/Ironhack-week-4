@@ -5,6 +5,7 @@
     user.products.create(
     title: "Awesome Product #{j}",
     description: "It is awesome!",
-    deadline: 1.day.from_now)
+    deadline: 1.day.from_now,
+    minimum_bid: 5)
   end
 end

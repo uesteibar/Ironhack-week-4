@@ -14,7 +14,7 @@ class Bid < ActiveRecord::Base
     if product.bids.any?
       last_bid = product.bids.last.amount
     end
-    unless amount > last_bid
+    unless amount > last_bid && amount > product.minimum_bid
       errors.add(:amount, "amount should be higher than the last bid")
     end
   end

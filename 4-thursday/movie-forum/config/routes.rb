@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   get "/users/login" => "users#login"
   post "/users/login" => "users#authenticate"
   delete "/users/logout" => "users#logout"
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :show]
 end

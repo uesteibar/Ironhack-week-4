@@ -28,7 +28,7 @@
 </div>
 <hr>
 <div class="row">
-  <% @movie.comments.slice(0, @movie.comments.size - 1).each do |comment| %>
+  <% @movie.comments.slice(0, @movie.comments.size - 1).reverse.each do |comment| %>
   <div class="media col-md-6 col-md-offset-3">
     <div class="media-body">
       <h4 class="media-heading"><%= link_to comment.user.username, user_path(comment.user) %></h4>

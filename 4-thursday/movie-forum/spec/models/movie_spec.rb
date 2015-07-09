@@ -37,6 +37,16 @@ RSpec.describe Movie, type: :model do
       end.to raise_error(ActiveRecord::RecordInvalid)
     end
 
+    it 'should NOT create a movie when title already exists is empty' do
+      expect do
+        Movie.create!(
+        title: @title,
+        synopsis: "",
+        year: @year
+        )
+      end.to raise_error(ActiveRecord::RecordInvalid)
+    end
+
     it 'should NOT create a movie when synopsis is empty' do
       expect do
         Movie.create!(
@@ -47,11 +57,17 @@ RSpec.describe Movie, type: :model do
       end.to raise_error(ActiveRecord::RecordInvalid)
     end
 
+
     it 'should NOT create a movie when synopsis is nil' do
+      Movie.create(
+      title: @title,
+      synopsis: @synopsis,
+      year: @year
+      )
       expect do
         Movie.create!(
         title: @title,
-        synopsis: nil,
+        synopsis: @synopsis,
         year: @year
         )
       end.to raise_error(ActiveRecord::RecordInvalid)

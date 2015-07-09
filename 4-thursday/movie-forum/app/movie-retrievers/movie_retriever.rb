@@ -1,4 +1,3 @@
-require_relative "./adapters/imdb_adapter"
 
 class MovieRetriever
   def initialize(secondary_retriever = ImdbAdapter.new)
@@ -8,6 +7,10 @@ class MovieRetriever
   def find(term)
     movies = Movie.where("UPPER(title) LIKE UPPER('%#{term}%')")
     return movies unless movies.blank?
+    load_from_secondary_retriever(term)
+  end
+
+  def load_from_secondary_retriever(term)
     @secondary_retriever.find(term)
   end
 end

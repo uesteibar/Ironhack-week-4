@@ -1,13 +1,26 @@
 <div class="row">
 
-<% @movies.each do |movie| %>
-<div class="jumbotron col-md-8 col-md-offset-2">
-  <h1><%= movie.title %></h1>
-  <p><%= movie.synopsis %></p>
-  <p>
-    <a class="btn btn-primary btn-lg" href="#" role="button">Discussion</a>
-  </p>
-</div>
-<% end %>
+  <% @movies.each do |movie| %>
+  <div class="jumbotron col-md-8 col-md-offset-2">
+    <h1><%= movie.title %></h1>
+    <p><%= movie.synopsis %></p>
+    <p>
+      <% if movie.id.present? %>
+        <%= link_to "Discussion", "/", class: "btn btn-primary btn-lg" %>
+      <% else %>
+        <%= form_for movie do |f| %>
+          <%= f.hidden_field :title %>
+          <%= f.hidden_field :synopsis %>
+          <%= f.hidden_field :year %>
+          <div>
+            <%= f.submit "Discussion", class: "btn btn-primary btn-lg" %>
+          </div>
+
+        <% end %>
+      <% end %>
+
+    </p>
+  </div>
+  <% end %>
 
 </div>

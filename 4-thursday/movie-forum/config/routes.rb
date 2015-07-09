@@ -3,5 +3,5 @@ Rails.application.routes.draw do
 
   # Movies
   get "/movies/search" => "movies#search"
-  resources :movies, only: [:index]
+  resources :movies, only: [:index, :create]
 end

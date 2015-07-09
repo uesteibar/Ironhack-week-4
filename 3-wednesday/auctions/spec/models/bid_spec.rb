@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Bid, type: :model do
   before(:each) do
-    owner = User.create(name: "owner", email: "owner@example.com")
-    @product = owner.products.create(
+    @owner = User.create(name: "owner", email: "owner@example.com")
+    @product = @owner.products.create(
       title: "Awesome thing",
       description: "Super super awesome!",
       deadline: 1.day.from_now
@@ -34,6 +34,12 @@ RSpec.describe Bid, type: :model do
       @product.save
       expect do
         @bidder.bids.create!(product_id: @product.reload.id, amount: 10)
+      end.to raise_error(ActiveRecord::RecordInvalid)
+    end
+
+    it 'should NOT create a bid when the owner and the bidder are the same user' do
+      expect do
+        @owner.bids.create!(product_id: @product.id, amount: 10)
       end.to raise_error(ActiveRecord::RecordInvalid)
     end
   end

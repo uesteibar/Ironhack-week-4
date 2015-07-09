@@ -4,6 +4,7 @@ class Bid < ActiveRecord::Base
 
   validate :correct_amount
   validate :is_before_deadline
+  validate :is_different_user
 
   private
 
@@ -22,6 +23,13 @@ class Bid < ActiveRecord::Base
     product = Product.find(product_id)
     if product.deadline < Date.current
       errors.add(:deadline, "deadline is passed!")
+    end
+  end
+
+  def is_different_user
+    product = Product.find(product_id)
+    if user_id == product.user.id
+      errors.add(:user_id, "the bidder cannot be the owner!")
     end
   end
 end

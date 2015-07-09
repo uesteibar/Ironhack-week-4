@@ -10,8 +10,9 @@ class MoviesController < ApplicationController
     movie = Movie.new(movie_params)
     if movie.valid?
       movie.save
-      redirect_to action: "search"
+      redirect_to "movies/#{movies.id}/comments"
     end
+    redirect_to action: "index"
   end
 
   private

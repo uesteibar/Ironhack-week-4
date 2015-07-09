@@ -6,7 +6,7 @@
     <p><%= movie.synopsis %></p>
     <p>
       <% if movie.id.present? %>
-        <%= link_to "Discussion", "/", class: "btn btn-primary btn-lg" %>
+        <%= link_to "Discussion", movie_comments_path(movie), class: "btn btn-primary btn-lg" %>
       <% else %>
         <%= form_for movie do |f| %>
           <%= f.hidden_field :title %>

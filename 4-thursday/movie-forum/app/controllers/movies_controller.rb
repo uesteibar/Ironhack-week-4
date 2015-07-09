@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
   def index
-    @movies = Movie.where("UPPER(title) LIKE UPPER('%#{params[:term]}%')")
+    @movies = MovieRetriever.new.find(params[:term])
   end
 
   def search

@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="jumbotron col-md-8 col-md-offset-2">
+    <h1><%= @movie.title %></h1>
+    <p><%= @movie.year %></p>
+    <p><%= @movie.synopsis %></p>
+  </div>
+</div>
+
+<div class="row">
+  <% @movie.comments.each do |comment| %>
+  <div class="media col-md-6 col-md-offset-3">
+    <div class="media-body">
+      <h4 class="media-heading"><%= comment.username %></h4>
+      <p>
+        <%= comment.content %>
+      </p>
+      <p>
+        <%= comment.created_at.strftime("%d.%m.%y at %H:%M") %>
+      </p>
+    </div>
+  </div>
+  <% end %>
+</div>

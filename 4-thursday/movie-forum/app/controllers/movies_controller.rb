@@ -3,6 +3,10 @@ class MoviesController < ApplicationController
     @movies = MovieRetriever.new.find(params[:term])
   end
 
+  def show
+    @movie = Movie.find(params[:id])
+  end
+
   def search
   end
 
@@ -10,7 +14,7 @@ class MoviesController < ApplicationController
     movie = Movie.new(movie_params)
     if movie.valid?
       movie.save
-      redirect_to "movies/#{movies.id}/comments"
+      redirect_to "movies/#{movies.id}"
     end
     redirect_to action: "index"
   end

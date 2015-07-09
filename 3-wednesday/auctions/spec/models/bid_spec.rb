@@ -28,5 +28,13 @@ RSpec.describe Bid, type: :model do
         @bidder.bids.create!(product_id: @product.id, amount: -10)
       end.to raise_error(ActiveRecord::RecordInvalid)
     end
+
+    it 'should NOT create a bid when deadline is older than today' do
+      @product.update_attribute(:deadline, 1.day.ago)
+      @product.save
+      expect do
+        @bidder.bids.create!(product_id: @product.reload.id, amount: 10)
+      end.to raise_error(ActiveRecord::RecordInvalid)
+    end
   end
 end

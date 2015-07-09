@@ -47,4 +47,12 @@ RSpec.describe MoviesController, type: :controller do
       expect(response).to render_template("show")
     end
   end
+
+  describe 'POST #create' do
+    it 'creates a movie' do
+      expect do
+        post :create, movie: { title: 'Matrix', synopsis: 'awesome film', year: 2000 }
+      end.to change(Movie, :count).by(1)
+    end
+  end
 end

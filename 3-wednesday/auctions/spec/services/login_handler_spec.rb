@@ -1,3 +1,4 @@
+require "rails_helper"
 
 describe LoginHandler do
   before(:each) do

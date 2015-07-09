@@ -7,8 +7,13 @@ class Bid < ActiveRecord::Base
   private
 
   def correct_amount
-    unless amount > 0
-      errors.add(:amount, "amount should be higher than 0")
+    product = Product.find(product_id)
+    last_bid = 0
+    if product.bids.any?
+      last_bid = product.bids.last.amount
+    end
+    unless amount > last_bid
+      errors.add(:amount, "amount should be higher than the last bid")
     end
   end
 end

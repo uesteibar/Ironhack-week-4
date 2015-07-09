@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   def logout
-    session[:user_id] = nil
+    session.delete(:user_id)
     redirect_to "/users/login"
   end
 

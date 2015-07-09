@@ -25,10 +25,20 @@ comments = [
   "It's the worst movie ever"
 ]
 
+users = []
+
+usernames.each do |username|
+  users << User.create(
+  username: username,
+  password: "1234"
+  )
+end
+
+
 movies.each do |movie|
   3.times do
     movie.comments.create(
-    username: usernames.sample,
+    user_id: users.sample.id,
     content: comments.sample)
   end
 end

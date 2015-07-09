@@ -10,8 +10,9 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    filetered_params = params.require(:comment).permit(:username, :content)
+    filetered_params = params.require(:comment).permit(:content)
     filetered_params[:movie_id] = params[:movie_id]
+    filetered_params[:user_id] = session[:user_id]
     filetered_params
   end
 end

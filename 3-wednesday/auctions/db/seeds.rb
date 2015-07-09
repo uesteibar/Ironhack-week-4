@@ -1,6 +1,6 @@
 
 5.times do |i|
-  user = User.create(name: "User #{i}", email: "user#{i}@example.com")
+  user = User.create(name: "User #{i}", password: "1234", email: "user#{i}@example.com")
   3.times do |j|
     user.products.create(
     title: "Awesome Product #{j}",

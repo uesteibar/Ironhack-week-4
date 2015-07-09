@@ -15,5 +15,12 @@
       <%= link_to "Users", users_path %>
       <%= link_to "New user", new_user_path %>
     </footer>
+
+    <% if session[:user_id] %>
+      <%= form_tag("/users/login", method: "delete") do%>
+        <%= submit_tag("Log out") %>
+      <% end %>
+    <% end %>
+
   </body>
 </html>

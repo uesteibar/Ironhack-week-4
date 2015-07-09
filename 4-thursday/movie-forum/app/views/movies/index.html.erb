@@ -1,5 +1,13 @@
-<ul>
-  <% @movies.each do |movie| %>
-  <li><%= movie.title %></li>
-  <% end %>
-</ul>
+<div class="row">
+
+<% @movies.each do |movie| %>
+<div class="jumbotron col-md-8 col-md-offset-2">
+  <h1><%= movie.title %></h1>
+  <p><%= movie.synopsis %></p>
+  <p>
+    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+  </p>
+</div>
+<% end %>
+
+</div>

@@ -20,6 +20,9 @@
       <p>
         <%= @concert.description %>
       </p>
+
+      <%= render "helpers/comments/comments_count_tag", comments_count: @concert.comments_count %>
+
     </div>
   </div>
 </div>
@@ -42,18 +45,4 @@
   </div>
 </div>
 <hr>
-<div class="row">
-  <% @concert.comments.slice(0, @concert.comments.size - 1).reverse.each do |comment| %>
-  <div class="media col-md-6 col-md-offset-3">
-    <div class="media-body">
-      <h4 class="media-heading"><%= comment.username %></h4>
-      <p>
-        <%= comment.content %>
-      </p>
-      <p>
-        <%= comment.created_at.strftime("%d.%m.%y at %H:%M") %>
-      </p>
-    </div>
-  </div>
-  <% end %>
-</div>
+<%= render "helpers/comments/comment_list", comments: @concert.comments.slice(0, @concert.comments.size - 1) %>

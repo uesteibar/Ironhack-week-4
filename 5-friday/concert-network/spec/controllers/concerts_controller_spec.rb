@@ -14,6 +14,19 @@ RSpec.describe ConcertsController, type: :controller do
     end
   end
 
+  describe 'GET #budget' do
+    it 'responds successfully with an HTTP 200 status code' do
+      get :budget
+      expect(response).to be_success
+      expect(response.code.to_i).to eq(200)
+    end
+
+    it 'renders the index template' do
+      get :budget
+      expect(response).to render_template('budget')
+    end
+  end
+
   describe 'GET #show' do
     before(:each) do
       @concert = Concert.create(

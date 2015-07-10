@@ -16,6 +16,10 @@ class ConcertsController < ApplicationController
     @concerts = Concert.budget(params[:budget])
   end
 
+  def most_commented
+    @concerts = Concert.most_commented
+  end
+
   def new
     @concert = Concert.new
   end

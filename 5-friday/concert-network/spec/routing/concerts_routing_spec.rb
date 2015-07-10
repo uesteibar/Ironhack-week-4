@@ -34,5 +34,17 @@ describe ConcertsController do
       }
       expect(params).to route_to("concerts#create")
     end
+
+    it "should route to #budget" do
+      expect({:get => "/concerts/budget"}).to route_to("concerts#budget")
+    end
+
+    it "should route to #search" do
+      expect({:get => "/concerts/budget/search"}).to route_to("concerts#search")
+    end
+
+    it "should route to #most_commented" do
+      expect({:get => "/concerts/most-commented"}).to route_to("concerts#most_commented")
+    end
   end
 end

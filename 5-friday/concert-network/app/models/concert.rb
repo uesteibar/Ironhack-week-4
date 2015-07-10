@@ -11,10 +11,20 @@ class Concert < ActiveRecord::Base
   end
 
   def self.this_month
-    where("date > ?", Date.today).where("date <= ?", Date.today.end_of_month)
+    upcoming.where("date <= ?", Date.today.end_of_month)
   end
 
   def self.budget(price_limit)
     where("price <= ?", price_limit).order(:price)
+  end
+
+  def self.most_commented(limit = 10)
+    upcoming.order("comments_count DESC").limit(limit)
+  end
+
+  private
+
+  def self.upcoming
+    where("date > ?", Date.today)
   end
 end

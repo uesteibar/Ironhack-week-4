@@ -15,6 +15,9 @@
     <p>
       <%= "#{concert.venue} - #{concert.city}" %>
     </p>
+
+    <%= render "helpers/comments/comments_count_tag", comments_count: concert.comments_count %>
+
     <p>
       <%= link_to "Details", concert_path(concert), class: "btn btn-primary btn-lg" %>
     </p>

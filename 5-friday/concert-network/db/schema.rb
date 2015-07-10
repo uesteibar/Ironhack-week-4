@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150710074557) do
+ActiveRecord::Schema.define(version: 20150710095351) do
 
   create_table "concerts", force: :cascade do |t|
     t.datetime "created_at",  null: false
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20150710074557) do
     t.string   "city"
     t.float    "price"
     t.text     "description"
-    t.datetime "date"
+    t.date     "date"
   end
 
 end

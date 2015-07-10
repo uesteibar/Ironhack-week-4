@@ -1,24 +1,28 @@
 <div class="row">
 
-  <% @concerts.each do |concert| %>
-  <div class="jumbotron col-md-8 col-md-offset-2">
-    <h1>
-      <%= concert.band %>
-    </h1>
-    <p>
-      <%= concert.date.strftime("%d.%m.%y") %>
-    </p>
-    <p>
-      <%= "#{concert.price} €" %>
-    </p>
-    <p>
-      <%= "#{concert.venue} - #{concert.city}" %>
-    </p>
+  <%= render "aside_concerts", concerts: @concerts_this_month %>
 
-    <p>
-      <%= link_to "Details", concert_path(concert), class: "btn btn-primary btn-lg" %>
-    </p>
+  <div class="col-md-8">
+    <h2 class="text-center">Concerts today!</h2>
+    <% @concerts_today.each do |concert| %>
+    <div class="jumbotron">
+      <h1>
+        <%= concert.band %>
+      </h1>
+      <p>
+        <%= concert.date.strftime("%d.%m.%y") %>
+      </p>
+      <p>
+        <%= "#{concert.price} €" %>
+      </p>
+      <p>
+        <%= "#{concert.venue} - #{concert.city}" %>
+      </p>
+
+      <p>
+        <%= link_to "Details", concert_path(concert), class: "btn btn-primary btn-lg" %>
+      </p>
+    </div>
+    <% end %>
   </div>
-  <% end %>
-
 </div>

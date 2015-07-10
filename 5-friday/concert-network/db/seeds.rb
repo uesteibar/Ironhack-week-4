@@ -21,7 +21,8 @@ venues = [
 dates = [
   1.day.from_now,
   1.day.ago,
-  1.month.from_now
+  1.month.from_now,
+  Date.today
 ]
 
 2.times do

@@ -1,6 +1,8 @@
 class ConcertsController < ApplicationController
   def index
-    @concerts = Concert.all.order(:date)
+    concerts = Concert.all.order(:date)
+    @concerts_today = concerts.where(date: Date.today)
+    @concerts_this_month = concerts.where("date > ?", Date.today).where("date <= ?", Date.today.end_of_month)
   end
 
   def show

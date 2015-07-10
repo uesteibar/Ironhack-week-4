@@ -29,6 +29,7 @@ class ConcertsController < ApplicationController
     if @concert.valid?
       @concert.save
       redirect_to action: "show", id: @concert.id
+      flash[:success] = "#{@concert.band}'s concert was successfully created."
       return
     end
     render :new

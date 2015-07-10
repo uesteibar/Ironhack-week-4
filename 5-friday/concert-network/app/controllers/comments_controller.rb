@@ -3,6 +3,9 @@ class CommentsController < ApplicationController
     comment = Comment.new(comment_params)
     if comment.valid?
       comment.save
+      flash[:success] = "the comment was successfully sent."
+    else
+      flash[:error] = "there was a problem with your comment, please try again."
     end
     redirect_to "/concerts/#{comment_params[:concert_id]}"
   end

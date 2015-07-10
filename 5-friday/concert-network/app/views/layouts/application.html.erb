@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>ConcertNetwork</title>
+  <title>Live!</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
       <%= csrf_meta_tags %>
@@ -21,15 +21,28 @@
           </a>
           </div>
           <ul class="nav navbar-nav">
-            <li><%= link_to "Concerts", concerts_path %></li>
-            <li><%= link_to "New concert", new_concert_path %></li>
-            <li><%= link_to "I'm on a budget!", "/concerts/budget/search" %></li>
-            <li><%= link_to "Most commented", "/concerts/most-commented" %></li>
+            <li>
+              <%= link_to "Concerts", concerts_path %>
+            </li>
+            <li>
+              <%= link_to "New concert", new_concert_path %>
+            </li>
+            <li>
+              <%= link_to "I'm on a budget!", "/concerts/budget/search" %>
+            </li>
+            <li>
+              <%= link_to "Most commented", "/concerts/most-commented" %>
+            </li>
           </ul>
         </div>
       </nav>
 
-      <%= yield %>
+      <% flash.each do |key, value| %>
+        <%= content_tag :div, value, class: "text-center alert alert-#{key}" %>
+      <% end %>
+
+
+            <%= yield %>
     </div>
 
     <div class="push"></div>
@@ -38,7 +51,7 @@
   <div class="footer">
     <div class="container">
       <div class="row">
-          <p class="text-center">Welcome to Live! by uesteibar @ ironhack. 2015.</p>
+        <p class="text-center">Welcome to Live! by uesteibar @ ironhack. 2015.</p>
       </div>
     </div>
   </div>

@@ -8,7 +8,7 @@ RSpec.describe SitesController, type: :controller do
       expect(response.code.to_i).to eq(200)
     end
 
-    it "renders the index template" do
+    it "renders the home template" do
       get :home
       expect(response).to render_template("home")
     end

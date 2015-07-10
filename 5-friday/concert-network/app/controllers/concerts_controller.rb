@@ -22,6 +22,7 @@ class ConcertsController < ApplicationController
 
   def new
     @concert = Concert.new
+    @cities = City.all
   end
 
   def create
@@ -32,12 +33,13 @@ class ConcertsController < ApplicationController
       flash[:success] = "#{@concert.band}'s concert was successfully created."
       return
     end
+    @cities = City.all
     render :new
   end
 
   private
 
   def concert_params
-    params.require(:concert).permit(:band, :venue, :city, :date, :price, :description, :poster)
+    params.require(:concert).permit(:band, :venue, :city_id, :date, :price, :description, :poster)
   end
 end

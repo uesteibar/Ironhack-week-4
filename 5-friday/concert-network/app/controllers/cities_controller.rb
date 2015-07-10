@@ -16,13 +16,6 @@ class CitiesController < ApplicationController
     end
   end
 
-  def destroy
-    city = City.find(params[:id])
-    city.destroy
-    redirect_to action: "index"
-    flash[:success] = "the city #{city.name} was successfully deleted."
-  end
-
   private
 
   def city_params

@@ -13,13 +13,5 @@ describe CitiesController do
       }
       expect(params).to route_to("cities#create")
     end
-
-    it "should route to #create" do
-      city = City.create(name: "Barcelona")
-      params = {
-        delete: "/cities/#{city.id}",
-      }
-      expect(params).to route_to("cities#destroy", id: city.id.to_s)
-    end
   end
 end

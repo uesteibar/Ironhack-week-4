@@ -13,7 +13,7 @@
       <%= "#{concert.price} €" %>
     </p>
     <p>
-      <%= "#{concert.venue} - #{concert.city}" %>
+      <%= "#{concert.venue} - #{concert.city.name}" %>
     </p>
 
     <%= render "helpers/comments/comments_count_tag", comments_count: concert.comments_count %>

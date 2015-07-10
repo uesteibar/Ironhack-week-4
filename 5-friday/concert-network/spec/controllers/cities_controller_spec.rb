@@ -24,24 +24,4 @@ RSpec.describe CitiesController, type: :controller do
       end.to change(City, :count).by(1)
     end
   end
-
-  describe 'POST #create' do
-    it 'creates a concert' do
-      params = {
-        name: "Barcelona"
-      }
-      expect do
-        post :create, city: params
-      end.to change(City, :count).by(1)
-    end
-  end
-
-  describe 'POST #create' do
-    it 'creates a concert' do
-      city = City.create(name: "Barcelona")
-      expect do
-        delete :destroy, id: city.id
-      end.to change(City, :count).by(-1)
-    end
-  end
 end

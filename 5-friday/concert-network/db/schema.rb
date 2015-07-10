@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150710145419) do
+ActiveRecord::Schema.define(version: 20150710153258) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name"
@@ -32,7 +32,6 @@ ActiveRecord::Schema.define(version: 20150710145419) do
     t.datetime "updated_at",                      null: false
     t.string   "band"
     t.string   "venue"
-    t.string   "city"
     t.float    "price"
     t.text     "description"
     t.date     "date"
@@ -41,6 +40,7 @@ ActiveRecord::Schema.define(version: 20150710145419) do
     t.integer  "poster_file_size"
     t.datetime "poster_updated_at"
     t.integer  "comments_count",      default: 0
+    t.integer  "city_id"
   end
 
 end

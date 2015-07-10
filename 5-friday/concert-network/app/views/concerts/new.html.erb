@@ -24,7 +24,8 @@
 
     <div class="form-group">
       <%= f.label :city%>
-      <%= f.text_field :city, class: "form-control"%>
+      <%= f.select(:city_id, options_for_select(@cities.order(:name).to_a.map{ |city| [city.name, city.id] }), {}, {class: "form-control"}) %>
+
     </div>
 
     <div class="form-group">

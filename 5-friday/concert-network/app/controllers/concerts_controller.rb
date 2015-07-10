@@ -10,6 +10,13 @@ class ConcertsController < ApplicationController
     @comment = @concert.comments.new
   end
 
+  def search
+  end
+
+  def budget
+    @concerts = Concert.where("price <= ?", params[:budget]).order(:price)
+  end
+
   def new
     @concert = Concert.new
   end

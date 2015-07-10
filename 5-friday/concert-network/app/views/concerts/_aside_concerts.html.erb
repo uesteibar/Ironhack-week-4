@@ -6,6 +6,9 @@
         <p class="lead text-center">
           <%= link_to concert.band, concert_path(concert) %>
         </p>
+        <div>
+          <%= image_tag concert.poster.url(:thumb), class:"img-responsive center-block" %>
+        </div>
         <p class="text-center">
           <%= concert.date.strftime("%d.%m.%y") %>
         </p>

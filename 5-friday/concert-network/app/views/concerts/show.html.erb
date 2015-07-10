@@ -1,20 +1,26 @@
 <div class="row">
-  <div class="jumbotron col-md-8 col-md-offset-2">
-    <h1>
-      <%= @concert.band %>
-    </h1>
-    <p>
-      <%= @concert.date.strftime("%d.%m.%y") %>
-    </p>
-    <p>
-      <%= "#{@concert.price} €" %>
-    </p>
-    <p>
-      <%= "#{@concert.venue} - #{@concert.city}" %>
-    </p>
-    <p>
-      <%= @concert.description %>
-    </p>
+  <div class="jumbotron col-md-10 col-md-offset-1 row">
+    <div class="col-md-4">
+      <%= image_tag @concert.poster.url(:medium), class:"img-responsive" %>
+    </div>
+
+    <div class="col-md-7 col-md-offset-1">
+      <h1>
+        <%= @concert.band %>
+      </h1>
+      <p>
+        <%= @concert.date.strftime("%d.%m.%y") %>
+      </p>
+      <p>
+        <%= "#{@concert.price} €" %>
+      </p>
+      <p>
+        <%= "#{@concert.venue} - #{@concert.city}" %>
+      </p>
+      <p>
+        <%= @concert.description %>
+      </p>
+    </div>
   </div>
 </div>
 

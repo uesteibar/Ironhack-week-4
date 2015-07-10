@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150710101340) do
+ActiveRecord::Schema.define(version: 20150710123305) do
 
   create_table "comments", force: :cascade do |t|
     t.string   "username"
@@ -22,14 +22,18 @@ ActiveRecord::Schema.define(version: 20150710101340) do
   end
 
   create_table "concerts", force: :cascade do |t|
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.string   "band"
     t.string   "venue"
     t.string   "city"
     t.float    "price"
     t.text     "description"
     t.date     "date"
+    t.string   "poster_file_name"
+    t.string   "poster_content_type"
+    t.integer  "poster_file_size"
+    t.datetime "poster_updated_at"
   end
 
 end

@@ -1,25 +1,8 @@
 <div class="row">
 
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-8 col-md-offset-2">
     <% @concerts.each do |concert| %>
-    <div class="jumbotron">
-      <h1>
-        <%= concert.band %>
-      </h1>
-      <p>
-        <%= concert.date.strftime("%d.%m.%y") %>
-      </p>
-      <p>
-        <%= "#{concert.price} €" %>
-      </p>
-      <p>
-        <%= "#{concert.venue} - #{concert.city}" %>
-      </p>
-
-      <p>
-        <%= link_to "Details", concert_path(concert), class: "btn btn-primary btn-lg" %>
-      </p>
-    </div>
+    <%= render "concert_simple", concert: concert %>
     <% end %>
   </div>
 </div>

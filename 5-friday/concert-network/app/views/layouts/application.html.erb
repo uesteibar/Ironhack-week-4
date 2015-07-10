@@ -1,24 +1,44 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>ConcertNetwork</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+      <%= csrf_meta_tags %>
 </head>
+
 <body>
 
-  <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">
-        Live!
-      </a>
+  <div class="wrap">
+
+    <div class="container-fluid">
+      <nav class="navbar navbar-primary">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+            Live!
+          </a>
+          </div>
+        </div>
+      </nav>
+
+      <%= yield %>
+    </div>
+
+    <div class="push"></div>
+  </div>
+
+  <div class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-4">
+          <p>Welcome to Live! by uesteibar @ ironhack. 2015.</p>
+        </div>
+      </div>
     </div>
   </div>
-</nav>
-
-<%= yield %>
 
 </body>
+
 </html>

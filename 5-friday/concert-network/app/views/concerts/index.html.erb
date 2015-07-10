@@ -14,11 +14,9 @@
     <p>
       <%= "#{concert.venue} - #{concert.city}" %>
     </p>
+
     <p>
-      <%= concert.description %>
-    </p>
-    <p>
-      <%= link_to "Discussion", concert_path(concert), class: "btn btn-primary btn-lg" %>
+      <%= link_to "Details", concert_path(concert), class: "btn btn-primary btn-lg" %>
     </p>
   </div>
   <% end %>

@@ -1,8 +1,7 @@
 class ConcertsController < ApplicationController
   def index
-    concerts = Concert.all.order(:date)
-    @concerts_today = concerts.where(date: Date.today)
-    @concerts_this_month = concerts.where("date > ?", Date.today).where("date <= ?", Date.today.end_of_month)
+    @concerts_today = Concert.today
+    @concerts_this_month = Concert.this_month
   end
 
   def show
@@ -14,7 +13,7 @@ class ConcertsController < ApplicationController
   end
 
   def budget
-    @concerts = Concert.where("price <= ?", params[:budget]).order(:price)
+    @concerts = Concert.budget(params[:budget])
   end
 
   def new

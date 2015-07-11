@@ -18,6 +18,12 @@ venues = [
   "Somewhere in the middle"
 ]
 
+usernames = [
+  "someone",
+  "jonhdoe",
+  "uesteibar"
+]
+
 comments = [
   "Love it!",
   "It sucks!",
@@ -45,7 +51,7 @@ dates = [
     )
 
     Random.rand(1..20).times do |time|
-      concert.comments.create(username: "user time", content: comments.sample)
+      concert.comments.create(username: usernames.sample, content: comments.sample)
     end
   end
 end
